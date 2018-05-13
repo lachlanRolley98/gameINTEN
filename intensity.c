@@ -320,7 +320,7 @@ void choose_discards() {
     }
     if (throw_away[0] == 0 || throw_away[1] == 0 || throw_away[2] == 0){
         n = 0 ;
-        while (n <  ){
+        while (n < 10 ){
         int fsafe = 0 ;
         if ((initial_ten[n] / 10) > 4.0 && (initial_ten[n] / 10) < 5 && fsafe == 0){
             throw_away[i] = initial_ten[n]; 
@@ -362,7 +362,7 @@ void choose_card_to_play(void) {
     int i = 0 ;
     int N_cards = 0;
     int N_played = 0;
-    int pos = 0 ;
+    int poss = 0 ;
     int first_scan[3] = {0} ;
     while (n < 3){
         scanf("%d", & i );
@@ -371,11 +371,11 @@ void choose_card_to_play(void) {
     }
     N_cards = first_scan[0];
     N_played = first_scan[1];
-    pos = first_scan[2];
+    poss = first_scan[2];
     n = 0 ;
     i = 0 ;
     // ADD CODE TO READ THE CARDS OF YOUR HAND INTO AN ARRAY USING SCANF
-    int current_hand[N_cards];
+    int current_hand[10] = {0};
     while (n < N_cards ){
         scanf("%d", &i);
         current_hand[n] = i ;
@@ -384,16 +384,18 @@ void choose_card_to_play(void) {
     n = 0 ;
     i = 0 ;        
     // ADD CODE TO READ THE CARDS PREVIOUSLY PLAYED THIS ROUND INTO AN ARRAY USING SCANF
-    int current_played[N_played];
-    while (n < N_played ){
-        scanf("%d", &i);
-        current_played[n] = i ;
-        n ++ ;
-    }   
+    int current_played[4] = {0} ;
+    if (N_played != 0){                               // stops code f'ing_up if nothings been played so array goes made                      
+        while (n < N_played ){
+            scanf("%d", &i);
+            current_played[n] = i ;
+            n ++ ;
+        } 
+    }      
     n = 0 ;
     i = 0 ; 
     // ADD CODE TO READ THE CARDS PLAYED IN THE HISTORY OF THE GAME INTO AN ARRAY USING SCANF     
-    if (N_cards != 10){   
+    if (N_cards != 10){                                // stops code f'ing_up if nothings been played so array goes made 
         int N_prev_played = (10 - N_cards)*4 ;
         int cards_prev_played [N_prev_played];
         while (n < N_prev_played ){
@@ -423,13 +425,36 @@ void choose_card_to_play(void) {
     n = 0 ;
     i = 0 ; 
     // THEN ADD YOUR CODE HERE TO CHOOSE AND PRINT THE CARD YOU WISH TO PLAY
-    int wana_play = 0;
-    
-    
-        
+    int a = current_played[0] % 10 ;
+    int b = current_played[0] - a  ;   // b is just the range, eg 10 20 30 40
+    int legal_plays[10] = {0} ;
+    int lowest_legal = 0 ;
+    n = 0 ;
+    while(n < 10 && b !=0){
+        if ((current_hand[n] - b)>0 && (current_hand[n] - b)<10){
+            legal_plays[n] = current_hand[n] ;
+            
+        } 
+        n++ ;    
+    }
+    n = 0 ;
+    while(n < 10){
+        if (legal_plays[n] != 0 ){
+        lowest_legal = legal_plays[n]; //lowest will be the last legal it finds
+        }
+        n++ ;
+    }
+    if(lowest_legal != 0){
+        printf("%d\n", lowest_legal);
+    }
+    if(lowest_legal == 0){
+        printf("%d\n", current_hand[0]);
+        }        
+     
+      
     // NOTE: THE PROVIDED CODE DOES NOT MAKE A LEGAL MOVE. YOU MUST CHANGE IT TO
     // PLAY A CARD FROM YOUR HAND.
-    printf("\n");
+    
 
 }
 
