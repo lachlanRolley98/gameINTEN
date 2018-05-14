@@ -361,6 +361,68 @@ void choose_discards() {
     }  
     printf("\n");  
 }
+/*void choose_discards() {                                                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ADD CODE TO READ THE CARDS OF YOUR HAND INTO AN ARRAY USING SCANF     //   discard cards with while loop for better style but performs less well cos doesnt use above stratgy, just lowest card sellects highest  //
+                                                                             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    int n = 0;
+    int i = 0;
+    int initial_ten[N_CARDS_INITIAL_HAND] = {0};
+    while (n < 10 ){
+        scanf("%d", &i);
+        initial_ten[n] = i ;
+        n ++ ;
+    }  
+    i = 0 ;  
+    // THEN ADD YOUR CODE HERE TO CHOOSE AND PRINT THE CARDS YOU WISH TO DISCARD 
+    int throw_away[10] = {0};                                                                                        //basically fills up an array of 3 with the highest possible cards   
+    int wabbawabba = 2 ;
+    n = 0 ;
+    while (wabbawabba < 11){
+        n = 0 ; 
+        int wabbababba = 0 ;        
+        while(n<10){
+            int fsafe = 0 ;  
+            
+            if (initial_ten[n] > (50-wabbawabba) && initial_ten[n] < 50 && fsafe == 0){  
+                throw_away[i] = initial_ten[n]; 
+                fsafe = 1 ;
+                initial_ten[n] = - 1 ;
+                i ++ ;
+            } 
+            if (initial_ten[n] > (40-wabbawabba) && initial_ten[n] < 40 && fsafe == 0){ 
+                throw_away[i] = initial_ten[n]; 
+                fsafe = 1 ;
+                initial_ten[n] = - 1 ;
+                i ++ ;
+            }        
+            if (initial_ten[n] > (30-wabbawabba) && initial_ten[n] < 30 && fsafe == 0){ 
+                throw_away[i] = initial_ten[n];                                          
+                fsafe = 1 ;
+                initial_ten[n] = - 1 ;
+                i ++ ;
+            }    
+            if (initial_ten[n] > (20-wabbawabba) && initial_ten[n] < 20 && fsafe == 0){
+                throw_away[i] = initial_ten[n]; 
+                fsafe = 1 ;
+                initial_ten[n] = - 1 ;
+                i ++ ;
+            }
+            
+            
+            if(i > 0)
+                fprintf(stderr, "Last discarded: %d at %d\n", throw_away[i-1], wabbawabba);
+            n++; 
+        }
+        wabbawabba ++ ;   
+    } 
+    int j = 0 ;
+    while (j < 3){
+        printf("%d ",throw_away[j]);
+        j++;  
+    }  
+    printf("\n");  
+}
+*/
 void choose_card_to_play(void) {
     // ADD CODE TO READ THE FIRST THREE NUMBERS (NUMBER OF CARDS IN YOUR HAND,NUMBER OF CARDS PLAYED THIS ROUND, TABLE POSITION)
     int n = 0 ;
@@ -662,7 +724,7 @@ void run_unit_tests(void) {
 
     //assert(get_local_time(TOWN_SYDNEY, 3, 31, 1600) == 200); wot
 
-
+    // sorry for not using functions :/
 
 
 
