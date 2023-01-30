@@ -1,3 +1,16 @@
+COMP1511 18s1 (webcms)
+Assignment 2 - Intensity
+COMP1511 18s1 (flask)
+Overview
+The Rules of Intensity Intensity in C
+Implementation
+Printing Your Player Name Selecting Discards Playing A Card Unit Tests
+Playing Intensity
+The Intensity Referee Interactive Intensity Example Games Intensity Tournament
+Code | Assessment
+Initial Code Clarifications Attribution of Work Submission of Work Assessment
+Overview
+For this assignment, you will be writing a program to play the card game Intensity.
 
 The Rules of Intensity
 Intensity is an unusual card game which is thought to have originated in post-WWII buffalo hunting camps in Australia's Northern territory. The name intensity is thought to derive from numbers in groups of ten being important.
