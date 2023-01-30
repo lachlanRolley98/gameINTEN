@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)file:///C:/Users/rolle/Downloads/Assignment%202%20-%20Intensity.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>
+
+Assignment 2 - Intensity
+
+</title>
+
+
+
+
+<!-- <link href="/~cs1511/18s1/flask.cgi/static/bootstrap.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="./Intensity_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="./Intensity_files/course.css" rel="stylesheet">
+<!-- <script type="text/javascript" src="/~cs1511/18s1/flask.cgi/static/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="/~cs1511/18s1/flask.cgi/static/bootstrap.min.js"></script> -->
+<script src="./Intensity_files/jquery-3.3.1.min.js.download"></script>
+<script src="./Intensity_files/popper.min.js.download"></script>
+<script src="./Intensity_files/bootstrap.min.js.download" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./Intensity_files/course.js.download"></script>
+
+<!-- prism code-highligting -->
+<link href="./Intensity_files/prism.css" rel="stylesheet">
+<!-- defer loading of prism.js script until DOM is loaded, as per PR #26 and https://stackoverflow.com/a/24070373 -->
+<script type="text/javascript" src="./Intensity_files/prism.js.download" defer=""></script>
+
+<link rel="canonical" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/">
+</head>
+<body class="container">
+
+
+
+
+<div id="heading" class="row">
+
+
+<div class="col-3 text-left">
+<a class="heading_link" target="_blank" id="left_heading_link" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/">COMP1511 18s1 (webcms)</a>
+</div>
+
+<div class="col-6 text-center">
+
+
+Assignment 2 - Intensity
+
+
+</div>
+
+<div class="col-3 text-right">
+<a class="heading_link" target="_blank" id="right_heading_link" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/index.html">COMP1511 18s1 (flask)</a>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<dl class="row" id="toc">
+<dt class="col-3 text-right"><a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#h1-overview">Overview</a></dt>
+<dd class="col-8"><ul class="list-inline mb-0">
+<li class="list-inline-item">
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#rules">The Rules of Intensity</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#intensity-in-c">Intensity in C</a>
+</li>
+</ul>
+</dd>
+<dt class="col-3 text-right"><a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#h1-impl">Implementation</a></dt>
+<dd class="col-8"><ul class="list-inline mb-0">
+<li class="list-inline-item">
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#player-name">Printing Your Player Name</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#selecting-discards">Selecting Discards</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#playing-a-card">Playing A Card</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#unit-tests">Unit Tests</a>
+</li>
+</ul>
+</dd>
+<dt class="col-3 text-right"><a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#h1-playing">Playing Intensity</a></dt>
+<dd class="col-8"><ul class="list-inline mb-0">
+<li class="list-inline-item">
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#referee">The Intensity Referee</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#interactive">Interactive Intensity</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#example-games">Example Games</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#intensity-tournament">Intensity Tournament</a>
+</li>
+</ul>
+</dd>
+<dt class="col-3 text-right"><a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#h1-code">Code</a> | <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#h1-assessment">Assessment</a></dt>
+<dd class="col-8"><ul class="list-inline mb-0">
+<li class="list-inline-item">
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#initial-code">Initial Code</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#clarifications">Clarifications</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#attribution">Attribution of Work</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#submission">Submission of Work</a>
+<a class="px-3 py-2" href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#assessment">Assessment</a>
+</li>
+</ul>
+</dd>
+</dl>
+<h1 id="h1-overview">Overview</h1>
+<p>
+For this assignment, you will be writing a program to play the card game <i>Intensity</i>.
+
+</p><h2 id="rules">The Rules of Intensity</h2>
+<p>
+<i>Intensity</i> is an unusual card game which is thought to have
+originated in post-WWII buffalo hunting camps in Australia's Northern territory.
+The name in<b>tens</b>ity is thought to derive from numbers in groups of ten being important.
+</p><h3>Cards</h3>
+<p>
+It is played with a deck of 40 cards.
+</p><p>
+The cards are numbered 10 to 49.
+</p><p>
+No two cards have the same number.
+</p><p>
+11 cards have special significance.
+They are the cards numbered 30 to 39, usually called the <i>calves</i>, and
+the card numbered 47, usually called the <i>buffalo</i>.
+</p><h3>Game Play</h3>
+<p>
+<i>Intensity</i> is played by four players sitting around
+a circular table. These players are numbered clockwise: 0, 1, 2 and 3.
+The deck is divided randomly among the 4 players. So each player starts
+with a <b>hand</b> of 10 cards.
+</p><h4>Stage 1: Discarding</h4>
+<p>
+In the first stage of play, each player selects three cards from their hand
+to be passed to the player on their left (clockwise).  They, of course, then receive three cards from the player on their right.
+So player 0 passes to player 1, player 1 to player 2, player 2 to player 3 and player 3 to player 0.
+</p><p>
+The four players simultaneously select the three cards to be passed on.  Each player must
+pass on 3 cards, before receiving the three cards from the player on their right.
+Hence, you must select the three cards you will pass to the player on your left
+before you know which three cards you have been given by the player on your right.
+</p><h4>Stage 2: Playing Cards</h4>
+<p>
+The second stage of play consists of a series of 10 <b>rounds</b>.
+The goal of the game is to avoid penalty points during these ten rounds.
+</p><p>
+A <b>round</b> begins with a designated player selecting a card from their hand
+and playing it.
+Then proceeding clockwise, the other players, in turn, each select
+a card from their hand and play it.
+</p><p>
+Hence for the first round, each player will have ten cards in their hand to
+select from, for the second round they will have nine cards in their hand and so on.
+For the tenth and last round, each player will have only one card and
+hence, no choice in the card they play.
+</p><h5>Playing a Card</h5>
+<p>
+The first digit of the first card played in a round is important.
+The subsequent players <b>must</b> play a card of the same first digit
+as the first card if possible.
+</p><p>
+For example, if the first card played in a round is the <b>17</b>, the other
+3 players must play a card with a first digit of '<b>1</b>' if they have one in their hand.
+</p><p>
+If one of the players does not have a card with a first digit of '<b>1</b>' in their hand they may play
+a card of another first digit.  The following players are still required
+to play a card with a first digit of '<b>1</b>' card  if they have one.
+</p><h5>Winning a Round</h5>
+<p>
+A round is won by the person who plays the card
+of the same first digit as the first card in the round with the largest number.
+For example, if the first card in a round is the <b>24</b>, the
+card with the largest number with first digit '2' will win the round.  If no other
+card with the first digit '2' played the <b>24</b> wins.
+</p><p>
+Player 0 plays the first card  of the first round.
+Subsequently the winner of each round plays the first card of the next round.
+</p><p>
+If, for example, player 2 won the last round, then player 2 would play the
+first card of the next round and then  players 3, 0 and 1 would play in that order.
+</p><h5>Buffalo and Calves</h5>
+<p>
+One  restriction to the above rules is that
+a player is not allowed to play a <i>calf</i> (a card in the range 30..39) as the first card in a round
+unless a <i>calf</i> has been  played in any of the previous rounds
+or they have only <i>calves</i> in their hand.
+This restriction does not apply to playing a <i>calf</i>
+as the second, third or fourth card in a round.
+</p><p>
+In other words, if no cards in the range 30..39 have been previously played, a card in the range 30..39
+can not be played as the first card of a round unless the player has no choice.
+</p><p>
+There is no restriction on when the <i>buffalo</i> can be played as the first card.
+</p><h5>Penalty Points</h5>
+<p>
+The aim of <i>Intensity</i> is to avoid penalty points.  A player scores penalty points
+if certain cards occur in rounds they have won. Each <i>calf</i> is worth one penalty point
+and the <i>buffalo</i> (47) is  worth 7 penalty points.
+</p><p>
+Hence, generally players try to avoid winning rounds which contain <i>calves</i> and they particularly
+try to avoid winning rounds which contain the <i>buffalo</i>.
+</p><p>
+If a round doesn't contain a <i>calf</i> or the <i>buffalo</i> it doesn't affect the score.
+</p><p>
+When all 10 rounds are played the penalty points are calculated for each player.
+The winner of the game is the player with the fewest penalty points.
+</p><p>
+If a player attempts to play an illegal card they receive five penalty points.
+The referee will instead select a legal card from their hand at random.
+This same applies to discards.
+</p><h5>Help + Resources</h5>
+<h6><b>Rules Video</b></h6>
+<p>
+To fully understand these rules, it might be worth watching
+<a href="https://www.youtube.com/watch?v=Kz5tfH9RPpk&amp;list=PLbSaCpDlfd6p276FkxFVdAiKjrfKnyuC4&amp;index=6">this tutor-made video</a>
+which runs through an example game of intensity.
+</p><h6><b>Valid Moves Diagram</b></h6>
+<p>
+The following diagram visualises the rules for what cards are valid to play at any given point during the game.
+<img src="file:///C:/Users/rolle/Downloads/Assignment%202%20-%20Intensity_files/intensity.png" style="max-width:800px">
+</p><hr>
+<a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#toc">
+<h1 class="mb-3 mt-1" id="h1-impl">Implementation</h1></a>
+<h2 id="intensity-in-c"><i>Intensity</i> in C</h2>
+<p>
+Your task in this assignment is to write a C program  which plays <i>Intensity</i> well.
+</p><p>
+Your program will need to take in relevant information about the state of the game,
+use that information to determine which move it should make, and then make that move.
+</p><p>
+Your program will be given this information as a series of integers on standard input,
+which describe the state of the game and indicate what it is being asked to do.
+</p><p>
+There are three sub-tasks that your program will be asked to do, over the course of a game of <i>Intensity</i>:
+</p><ol>
+<li>Print your player name
+    </li><li>Select the cards to discard
+    </li><li>Select which card to play
+</li></ol>
+<p>
+Your program will be run multiple times during the game: once for each "decision" that it must make.
+</p><p>
+For example, your program will be run once to select which
+3 cards it wishes to pass on.  This occurs once at the start of the hand.
+When it is your turn to play, your program will be asked which
+card it wishes to play.  This will happen 10 times during the playing of a hand.
+
+</p><h2 id="player-name"><i>Intensity</i> in C - Printing Your Player Name</h2>
+<p>
+If the first integer on standard input is <b>0</b>, your program is being asked to print the name of your player.
+Your program will be run once in this way at the start of the game.
+</p><p>
+Your program should print your chosen name as a single line.
+The name  can be anything you like - but please keep it tasteful - definitely nothing offensive or obscene.
+There is a limit of 32 characters.
+</p><p>
+A suffix will be added if needed to make your name unique.
+</p><p>
+For example:
+
+</p><pre class="command_line"><kbd class="shell">dcc intensity.c -o intensity</kbd>
+<kbd class="shell">./intensity</kbd>
+<kbd>0</kbd>
+Dennis Ritchie
+<kbd class="shell"></kbd>
+</pre>
+<h2 id="selecting-discards"><i>Intensity</i> in C - Selecting Discards</h2>
+<p>
+If the first integer on standard input is <b>1</b>, your program is being asked to select the 3 cards it wishes
+to discard. Your program will be run once in this way at the start of the game.
+</p><p>
+The first integer (1) will be followed by 10 integers which are the cards in your hand.
+These will all be numbers in the range 10..49.
+They will be in sorted (increasing) order.
+</p><p>
+You should read these 10 integers into an array, and then choose which 3 you
+wish to discard.
+</p><p>
+You program should then indicate the 3 cards it wishes to discard by
+printing a single line containing 3 integers.
+Each integer should be one of the cards in your hand and hence must be in the range 10..49.
+</p><p>
+For example:
+</p><pre class="command_line"><kbd class="shell">dcc intensity.c -o intensity</kbd>
+<kbd class="shell">./intensity</kbd>
+<kbd>1</kbd>
+<kbd>13 19 24 25 29 32 39 44 46 49</kbd>
+29 39 49
+<kbd class="shell"></kbd>
+</pre>
+
+In the above example the player has these cards in its hand: <b>[13, 19, 24, 25, 29, 32, 39, 44, 46, 49]</b>
+<p>
+It chooses to discard this 3 cards: <b>[29, 39, 49]</b>.
+
+</p><h2 id="playing-a-card"><i>Intensity</i> in C - Playing A Card</h2>
+<p>
+If the first integer on standard input is <b>2</b>, your program is being asked to play a card.
+Your program will be run ten times in this way during a game.
+</p><p>
+The first integer (2) will be followed by 3 more integers:
+
+</p><ol>
+<li>  how many cards are in your hand.  This will be in the range 1..10.
+</li><li>  how many cards have already been played this round .  This will be in the range 0..3.
+</li><li>  your table position.  This will be in the range 0..3.
+</li></ol>
+<h5>Cards In Your Hand</h5>
+Next will be the cards in your hand.  This will be 1..10 integers in the range 10..49
+They will be in sorted (increasing) order.
+<p>
+You should use scanf to read these into an array.
+Note you have already read a value telling you how many cards are in your hand so you
+know how many values to read
+</p><h5>Cards Played So Far This Round</h5>
+<p>
+Next will the cards that have been played so far this round.  This will be 0..3 integers in the range 10..49
+They will be in the order they were played - the first will be the first card played in this round.
+</p><p>
+You should also use scanf read to these into an array.
+Note you have already read a value telling you how many cards have been played this round so
+know how many values to read.
+</p><h5>Cards Played In Previous Rounds</h5>
+<p>
+</p><p>
+Next will be all the cards played in previous rounds.  This will be 0..36 integers in the range 10..49.
+They will be in the order they were played - the first will be the first card played in the game.
+</p><p>
+Again you should also use scanf read to these into an array.
+You can calculate how many values to expect from the number of cards left in your hand.
+For example if there are 7 cards in your hand there have been 3 previous rounds
+so there have 3*4 = 12 cards played in previous round
+</p><p>
+You can work out which player played each of the previous cards, because you know the player in table position 0
+played first in the first round, and you know the player who won the first round played first in
+the second round, and so on.
+</p><h5>Cards Your Player Discarded</h5>
+<p>
+</p><p>
+Next will be the cards your player discarded at the start of the game. This will be 3 integers in the range 10..49.
+They will be in sorted (increasing) order.  These will only be of interest if you are implementing a clever strategy.
+</p><h5>Cards Your Player Received</h5>
+<p>
+Last will be the cards your player received in the discard round at the start of the game. This will be 3 integers in the range 10..49
+They will be in sorted (increasing) order.  These will only be of interest if you are implementing a clever strategy.
+</p><h5>Playing A Card</h5>
+<p>
+Your program should then indicate the card it wishes to play by
+printing a single line containing an integer.
+This integer should be one of the cards in your hand and hence must be in the range 10..49.
+</p><p>
+For example:
+
+
+</p><pre class="command_line"><kbd class="shell">dcc intensity.c -o intensity</kbd>
+<kbd class="shell">./intensity</kbd>
+<kbd>2
+9 2 0
+11 15 18 23 33 34 47 48 49
+24 26
+16 13 19 12
+37 38 39
+34 47 48</kbd>
+23
+<kbd class="shell"></kbd>
+</pre>
+
+In the above example the player has 9 cards in its hand: <b>[11, 15, 18, 23, 33, 34, 47, 48, 49]</b>
+<p>
+Two cards played have been played this round: <b>[24, 26]</b>.
+</p><p>
+There has been 1 previous round in which the cards played were: <b>[16, 13, 19, 12]</b>
+</p><p>
+The player is sitting at table position <b>0</b>.
+</p><p>
+In the discard round this player discarded: <b>[37, 38, 39]</b> and received  <b>[34, 47, 48]</b>
+</p><p>
+The program played the only card that is legal to play in this situation, the <b>23</b>.
+</p><p>
+To fully understand these rules, it might be worth watching
+<a href="https://www.youtube.com/watch?v=GhqydBkzN1Y&amp;list=PLbSaCpDlfd6p276FkxFVdAiKjrfKnyuC4&amp;index=7">this tutor-made video</a>
+which answers some common questions students have about inputs.
+
+</p><h2 id="unit-tests"><i>Intensity</i> in C - Unit tests</h2>
+<p>
+If the first integer on standard input is 3, your program is being asked to run the unit tests
+you have added to <b>run_unit_tests</b>
+</p><hr>
+<a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#toc">
+<h1 class="mb-3 mt-1" id="h1-playing">Playing Intensity</h1></a>
+<h2 id="referee">The Intensity Referee</h2>
+<p>
+You do not have to write C to deal the cards, keep score or manage the playing of the game.
+</p><p>
+You are given a referee program which does this.
+</p><p>
+It takes as arguments, the names of 1 or more  C programs which play the game.  It compiles the
+programs and runs them giving them input as described above.
+</p><p>
+If there are less than 4 programs, the referee provides players (named <b>Lulu</b>, <b>Morgan</b>, <b>Amy</b> and <b>Rat</b>) who make random legal plays.
+</p><p>
+Run it like this:
+
+</p><pre class="command_line"><kbd class="shell">1511 intensity_referee intensity.c</kbd>
+Version: 0.2
+dcc -o intensity intensity_random.c
+dcc --valgrind -o intensity-valgrind intensity_random.c
+
+Deal:
+Table position 0: COMP1511 student: [10, 22, 23, 24, 28, 29, 35, 38, 41, 42]
+Table position 1: Lulu            : [11, 12, 15, 17, 21, 25, 27, 43, 44, 47]
+Table position 2: Amy             : [20, 26, 30, 32, 33, 36, 37, 39, 40, 45]
+Table position 3: Morgan          : [13, 14, 16, 18, 19, 31, 34, 46, 48, 49]
+
+...
+</pre>
+<p>
+</p><h2 id="interactive">Interactive Intensity</h2>
+
+An interactive <b>Intensity</b> player is available.
+It allows the (human) user to interactively choose the plays for one player.
+<p>
+Playing against Lulu, Amy and Morgan is not challenging but it may
+improve your understanding of the game.
+</p><p>
+Run it like this:
+</p><p>
+</p><pre class="command_line"><kbd class="shell">1511 intensity_referee -i</kbd>
+Version: 0.2
+
+Discards:
+
+Interactive Player must choose discards.
+Hand: [11, 12, 18, 19, 26, 28, 32, 33, 35, 43]
+Enter cards to discard: 32 33 35
+
+Round 0: Morgan             plays the 10
+Round 0: Amy                plays the 15
+Round 0: Lulu               plays the 16
+
+Interactive Player turn to play.
+Hand: [11, 12, 18, 19, 21, 22, 26, 28, 39, 43]
+Enter card to play:
+</pre>
+<h2 id="example-games">Example Games</h2>
+<p>
+
+An example Intensity game annotated
+with explanatory comments can be  <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/example_game.html">found here</a> These may help you understand the rules of <b>Intensity</b>.
+
+
+</p><h2 id="intensity-tournament">Intensity Tournament</h2>
+<p>
+An Intensity tournament will be run starting Monday.  Submit your work using give to take part.
+</p><p>
+In an <i>Intensity</i> tournament many <i>Intensity</i> games are played.
+The winner of each game receives 3 tournament points, the second placed
+player receives 2 tournament points and the third placed player receives 1 tournament point.
+The winner of the tournament is player with the most tournament points.
+</p><p>
+Hence in tournament play it is the finishing position in each game that is
+important, rather than the actual number of penalty points
+This is a fine distinction which will only affect players attempting sophisticated strategies.
+</p><p>
+In each round of a tournament, each player takes part in one four player game
+of Intensity.  The four player games are formed so that players with similar numbers
+of tournament points play each other.   Hence players of similar strength tend to
+play each other.
+</p><p>
+It may be necessary to use system players
+in one game, if there number of tournament participants is not divisible by four.
+This will be in the weakest game.
+
+</p><hr>
+<a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#toc">
+<h1 class="mb-3 mt-1" id="h1-code">Code</h1></a>
+<h2 id="initial-code">Initial Code</h2>
+<p>
+
+Here is some <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1//activities/intensity/intensity.c">code to start the assignment</a>.
+</p><p>
+Read this file carefully. It is strongly recommended you use this file to start the assignment.
+</p><p>
+Add your code to this file in the indicated places.
+</p><p>
+Do not change other parts of the file.
+</p><p>
+Start by adding code to create a player which makes only a legal play.
+</p><p>
+When you have a program that always makes a legal play, think of a <b>simple</b>
+strategy to choose good cards to discard at the start of the hand.
+Implement this strategy.
+</p><p>
+Next think of <b>simple</b> strategies to choose a good (and legal!)
+card to play and implement them.
+You will need to create separate functions to make your code readable.
+</p><p>
+When you add functions try to add some good unit tests to <b>run_unit_tests</b>.
+You may need to declare and initialize arrays in  <b>run_unit_tests</b> to do this.
+
+</p><h2 id="clarifications">Clarifications/Assumptions/Restrictions</h2>
+<p>
+You should follow  discussion about the assignment in the class forums.
+Questions about the assignment should be posted there so all students can see the answer.
+</p><p>
+Your code must be submitted in a single C file named <b>intensity.c</b>.
+</p><p>
+Your submitted code must be C only.  You may not submit code in other languages.
+You may not use <i>system</i> or other C functions to run external programs.
+</p><p>
+You may call functions from the standard C libraries (e.g. the functions from <code>stdio.h</code>, <code>stdlib.h</code>,  <code>string.h</code>) and the maths library (<code>math.h</code>).
+</p><p>
+Your <b>program</b>  must take at most 30 seconds to return a play or discards on a CSE lab computer
+when compiled with dcc --valgrind.
+</p><p>
+You are required to submit intermediate versions of your assignment (see below).
+</p><p>
+There is no way for your program to pass information from one play to the next.
+</p><p>
+
+Your program is not permitted to create files.
+
+
+</p><hr>
+<a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass2/index.html#toc">
+<h1 class="mb-3 mt-1" id="h1-assessment">Assessment</h1>
+</a>
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+
+
+
+
+<h2>Attribution of Work</h2>
+
+This is an individual assignment. The work you submit must be your own work and only your
+work apart from  exceptions below.  Joint work is not permitted.
+<p>
+You may use small amounts (&lt; 10 lines) of general purpose code (not
+specific to the assignment) obtained from
+site such as Stack Overflow or other publically available resources.
+You should attribute clearly the source of this code in a comment
+with it.
+</p><p>
+You are not permitted to request help with the assignment apart from
+in the course forum, help sessions or from course lecturers or tutors.
+</p><p>
+Do not provide or show your assignment work to any other person (including by posting it on the forum)
+apart from the teaching staff of COMP1511.
+
+</p><p>
+The work you submit must otherwise be entirely your own work.  Submission of work partially or completely derived
+from any other person or jointly written with any other person is not permitted.
+The penalties for such an offence may include negative marks,
+automatic failure of the course and possibly other academic discipline.
+Assignment submissions will be examined both automatically and manually
+for such submissions.
+</p><p>
+Relevant scholarship authorities will be informed if students holding scholarships
+are involved in an incident of plagiarism or other misconduct.
+If you knowingly provide or show your assignment work to another person for any
+reason, and work derived from it is submitted you may be penalized, even
+if the work was submitted without your knowledge or consent.  This may
+apply even if your work is submitted by a third party unknown to you.
+</p><p>
+Note, you will not be penalized if your work is
+taken without your consent or knowledge.
+
+</p><h2>Submission of Work</h2>
+
+You are required to submit intermediate versions of your assignment.
+<p>
+Every time you work on the assignment and make some progress you
+should copy your work to your CSE account and submit it using the give command below.
+</p><p>
+It is fine if intermediate versions do not compile or otherwise
+fail submission tests.
+</p><p>
+Only the final submitted version of your assignment will be marked.
+</p><p>
+All these intermediate versions of your work will be placed in a git repo
+and made available to you via a web interface at this URL, replace <i>z5555555</i> with your zpass.
+<code>https://gitlab.cse.unsw.edu.au/<i>z5555555</i>/18s1-comp1511-ass2/commits/master</code>
+</p><p>
+This will allow you to retrieve earlier versions of your code if needed.
+</p><p>
+You submit your work like this:
+</p><p>
+</p><pre class="command_line"><kbd class="shell">give cs1511 ass2 intensity.c</kbd>
+</pre>
+<h2>Assessment</h2>
+<p>
+This assignment will contribute 12% to your final mark.
+</p><p>
+80% of the marks for this assignment will be based on the performance of
+your <i>Intensity</i> program, i.e. how well it plays <i>Intensity</i>.
+</p><p>
+20% of the marks for assignment 2 will come from hand marking of the readability
+of the C you have written.  These marks will be awarded on the basis of clarity,
+commenting, elegance and style.  In other words, your tutor will assess how
+easy it is for a human to read and understand your program.
+</p><p>
+Tutors will also examine your testing strategy and unit tests.
+Describe your testing strategy above the <b>run_unit_tests</b> function.
+
+
+Here is an indicative marking scheme.
+</p><p>
+</p><table class="table table-bordered table-striped">
+<tbody><tr><td>HD (85-100%)</td><td>successfully implements good strategies, performs well in Intensity tournament, well-explained beautiful code
+</td></tr><tr><td>DN (75-85%)</td><td>successfully implements some strategy, competes successfully against Lulu, Morgan and Amy, readable code
+</td></tr><tr><td>60%</td><td>always makes a legal play, code is mostly readable
+</td></tr><tr><td>40-50%</td><td>serious attempt on assignment
+</td></tr><tr><td>-70%</td><td>Knowingly providing your work to anyone and it is subsequently submitted (by anyone).
+</td></tr><tr><td>-70%</td><td>Submitting any other person's work. This includes joint work.
+</td></tr><tr><td>0 FL for COMP1511</td><td>Paying another person to complete work. Submitting another person's work without their consent.
+</td></tr></tbody></table>
+<p>
+The lecturer may vary the assessment scheme after inspecting
+the assignment submissions but it will remain broadly similar to the description above.
+
+
+
+</p><h2>Due Date</h2>
+
+This assignment is tentatively due  Monday 14 May 23:59:59
+<p>
+If your assignment is submitted after this date, each hour it is late reduces
+the maximum mark it can achieve by 2%.
+For example if an assignment worth 74% was submitted
+10 hours late, the late submission would have no effect.
+If the same assignment was submitted 15 hours late it would be awarded
+70%, the maximum mark it can achieve at that time.
+
+
+
+
+
+
+</p><footer class="mt-3 container text-center no-print">
+<p class="text-muted">
+<strong>COMP1511 18s1: Programming Fundamentals</strong>
+is brought to you by <br>
+the <a href="https://www.cse.unsw.edu.au/">School of Computer Science and Engineering</a>
+at the <a href="https://www.unsw.edu.au/">University of New South Wales</a>, Sydney.<br>
+For all enquiries, please email the class account at
+<a href="mailto:@cse.unsw.edu.au">cs1511@cse.unsw.edu.au</a><br>
+
+<small>CRICOS Provider 00098G</small>
+</p>
+
+
+
+</footer>
+
+
+
+
+
+</body></html>
